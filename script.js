@@ -2,7 +2,7 @@
 const scrollContainer = document.getElementById("scroll-container");
 let count = 1;
 
-for (; count <= 10; count++) {
+for (count = 1; count <= 10; count++) {
    const div = document.createElement("div");
    div.innerText = `item ${count}`;
    div.className = "item";
