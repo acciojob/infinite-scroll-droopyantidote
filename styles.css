@@ -1,16 +1,16 @@
-#infi-list {
+/* CSS styles */
+#scroll-container {
   width: 200px;
   height: 300px;
   overflow: auto;
-
   margin: 30px;
   padding: 20px;
   border: 10px solid black;
 }
-li {
+.item {
   padding: 10px;
-  list-style-type: none;
+  /* list-style-type: none; */
 }
-li:hover {
+.item:hover {
   background: #ccc;
 }

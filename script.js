@@ -1,31 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const list = document.getElementById("infi-list");
-  const listItemHeight = 40; // Adjust according to your list item height
+// JavaScript code
+const scrollContainer = document.getElementById("scroll-container");
+let count = 1;
 
-  // Add 10 list items by default
-  for (let i = 1; i <= 10; i++) {
-    const listItem = document.createElement("li");
-    listItem.textContent = "Item " + i;
-    list.appendChild(listItem);
-  }
+for (; count <= 10; count++) {
+   const div = document.createElement("div");
+   div.innerText = `item ${count}`;
+   div.className = "item";
+   scrollContainer.appendChild(div);
+}
 
-  // Function to add more list items
-  function addMoreItems() {
-    for (let i = 1; i <= 2; i++) {
-      const listItem = document.createElement("li");
-      listItem.textContent = "Item " + (list.children.length + i);
-      list.appendChild(listItem);
-    }
-  }
+scrollContainer.addEventListener("scroll", () => {
+   let scrolledHeight = scrollContainer.scrollTop;
+   let maxScrollableHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
 
-  // Detect when user scrolls to the bottom
-  list.addEventListener("scroll", function () {
-    const scrollTop = list.scrollTop;
-    const clientHeight = list.clientHeight;
-    const scrollHeight = list.scrollHeight;
-
-    if (scrollTop + clientHeight >= scrollHeight - listItemHeight) {
-      addMoreItems();
-    }
-  });
+   if (maxScrollableHeight - scrolledHeight <= 5) {
+       addTwoMoreItems();
+   }
 });
+
+function addTwoMoreItems() {
+   const div1 = document.createElement("div");
+   div1.innerText = `item ${count++}` // item 11 , count = 12
+   div1.className = "item";
+
+   const div2 = document.createElement("div");
+   div2.innerText = `item ${count++}` // item 12 , count  = 13
+   div2.className = "item";
+
+   scrollContainer.append(div1, div2);
+}
